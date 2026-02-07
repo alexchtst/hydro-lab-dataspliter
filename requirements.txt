@@ -1,0 +1,14 @@
+jupyter
+ipykernel
+pandas
+geopandas
+matplotlib
+seaborn
+scikit-learn
+shapely
+mapclassify
+folium
+contextily
+scipy
+pymongo
+python-dotenv
