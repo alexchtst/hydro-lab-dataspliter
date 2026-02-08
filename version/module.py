@@ -77,9 +77,11 @@ def data_splitter(data_list, grid):
     data_container = defaultdict(list)
 
     for data in data_list:
+
         lat = data["latitude"]
         lon = data["longitude"]
-        area = find_grid(lat, lon, grid)
+
+        area = find_grid(lat, lon, grid)   # FIX
 
         if area:
             data_container[area].append(data)
@@ -87,6 +89,7 @@ def data_splitter(data_list, grid):
             data_container["OOB"].append(data)
 
     return dict(data_container)
+
 
 
 def convert(data, name):
@@ -105,6 +108,7 @@ def convert_all_data_container(data_splited):
 # class
 
 
+# class from the ./version/module.py
 class DataSplitter:
     def __init__(
         self,
@@ -129,10 +133,10 @@ class DataSplitter:
             for lon_min, lon_max in lon_bins:
                 grid.append({
                     "index": f"Area_{area_id}",
-                    "minimum-latitude": lat_min,
-                    "maximum-latitude": lat_max,
-                    "minimum-longitude": lon_min,
-                    "maximum-longitude": lon_max,
+                    "minimum_latitude": lat_min,
+                    "maximum_latitude": lat_max,
+                    "minimum_longitude": lon_min,
+                    "maximum_longitude": lon_max,
                 })
                 area_id += 1
 
@@ -142,15 +146,15 @@ class DataSplitter:
         for area in grid:
             if (
                 (
-                    area["minimum-latitude"] <= lat
+                    area["minimum_latitude"] <= lat
                     and
-                    lat < area["maximum-latitude"]
+                    lat < area["maximum_latitude"]
                 )
                 and
                 (
-                    area["minimum-longitude"] <= lon
+                    area["minimum_longitude"] <= lon
                     and
-                    lon < area["maximum-longitude"]
+                    lon < area["maximum_longitude"]
                 )
             ):
                 return area["index"]
@@ -163,7 +167,7 @@ class DataSplitter:
         for data in data_list:
             lat = data["latitude"]
             lon = data["longitude"]
-            area = find_grid(lat, lon, grid)
+            area = self.find_grid(lat, lon, grid)
 
             if area:
                 data_container[area].append(data)
@@ -191,8 +195,8 @@ class DataSplitter:
         return json_data
 
     def UploadToDatabase(
-        self,
-        DB_URI, DB_NAME,
+        self, 
+        DB_URI, DB_NAME, 
         COLLECTION_NAME, data_list
     ):
         try:
@@ -211,14 +215,17 @@ class DataSplitter:
         except Exception as E:
             print(f"Error happened: {str(E)}")
 
+
     def runSplit(self, dataJSON):
         grid = self.GRID
         data_splited = self.data_splitter(dataJSON, grid)
         self.result_files = self.convert_all_data_container(data_splited)
         self.dataSplited = data_splited
-
+    
     def UploadData(self, DB_URI, DB_NAME):
         res_temp = []
         for k, item in self.dataSplited.items():
             self.UploadToDatabase(DB_URI, DB_NAME, k, item)
             res_temp.append({"DB_NAME": DB_NAME, "COL_NAME": k})
+            
+    
