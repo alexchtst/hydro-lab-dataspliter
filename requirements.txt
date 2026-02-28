@@ -12,3 +12,4 @@ contextily
 scipy
 pymongo
 python-dotenv
+openpyxl
