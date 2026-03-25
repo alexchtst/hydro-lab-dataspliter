@@ -4,46 +4,43 @@ This repository is created to build most efficient way to represent and send dat
 ## Folder structure and content
 
 ```
+├── 📁 assets
+│   ├── 🖼️ geo-indexing.png
+│   └── 🖼️ pagination-flow.png
 ├── 📁 data
+│   ├── 📁 real_data
+│   │   └── 📄 ....
 │   ├── ⚙️ .gitignore
-│   ├── ⚙️ all-data.json
-│   ├── ⚙️ info-bins.json
-│   ├── ⚙️ info-grid.json
-│   ├── ⚙️ pairingdata.json
-│   └── ⚙️ splited-data.json
-├── 📁 version
-│   ├── ⚙️ .env.example
-│   ├── 📝 README.md
-│   ├── 🐍 module.py
-│   └── 📄 requrements.txt
+│   ├── 📄 ....
+│   └── 📝 DATACARD.md
+├── 📁 examples
+│   └── 📄 Data_Spliter_Example.ipynb
+├── 📁 modules
+│   ├── 📁 streamlit
+│   │   └── 📄  __init__.py
+│   ├── 📁 v1
+│   │   ├── 📄 __init__.py
+│   │   ├── 📄 data_merger.py
+│   │   ├── 📄 data_splitter.py
+│   │   ├── 📄 fetcher_functions.py
+│   │   └── 📄 uploader_todb.py
+│   └── 📄 __init__.py
 ├── ⚙️ .gitignore
 ├── 📝 README.md
-├── 📄 data-lab.ipynb
-├── 📄 data-merge.ipynb
-├── 📄 data_processing.ipynb
-├── 📄 final-test.ipynb
-├── 📄 main.ipynb
-└── 📄 requirements.txt
+├── 📄 requirements.txt
+└── 📄 workspace.ipynb
 ```
 
 ---
-- `main.ipynb` \
-**Jupyter notebook file to create efficient way to generate pivot points from database and Algorithm designing**
-
-- `data-lab.ipynb` \
-**Jupyter notebook file to implement to actual algorithm from main.ipynb**
-
-- `data_processing.ipynb` \
-**Jupyter notebook file to create create tools such as upload to database find method and implementation of data chunking**
-
-- `data-merge.ipynb` \
-**Main jupyter notebook to create data pairing for every stations to provide data statistics of stations**
 
 - `version/` \
-**Function Class and Archtecture Design Result**
+**Function, Class and Archtecture Design Result**
 
 - `data/` \
 **Data results folder with designed algorithm**
+
+- `workspace.ipynb/` \
+**Ipynb Workspace to problem solving the real data and implementation of the created model architecture**
 
 ## Created Algorithm
 
